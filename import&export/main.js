@@ -7,4 +7,5 @@ sum(1, 2);
 console.log(user);
 console.log(name);
 console.log(age);
+console.log(age);
 
