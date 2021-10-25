@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象优化</title>
+</head>
+
+<body>
+  <!-- 获取对象属性和值 -->
+  <script>
+    let person = {
+      name: "zhuoyq",
+      age: 23,
+      language: ['java', 'css', 'js']
+    }
+    console.log(Object.keys(person)); // ['name', 'age', 'language']
+    console.log(Object.values(person)); // ['zhuoyq', 23, ['java', 'css', 'js']]
+    console.log(Object.entries(person)); // [['name', 'zhuoyq'], ['age', 23], ['language', ['java', 'css', 'js']]]
+  </script>
+
+  <!-- 合并对象(属性相同时，后合并的对象属性值会覆盖之前的属性值) -->
+  <script>
+    let target = { a: 1 };
+    let source1 = { b: 2 };
+    let source2 = { c: 3 };
+    Object.assign(target, source1, source2);
+    console.log(target); // {a: 1, b: 2, c: 3}
+  </script>
+
+  <!-- 声明对象简写 -->
+  <script>
+    let name = "卓炎秋";
+    let age = 23;
+    // 传统
+    let person1 = { name: name, age: age };
+    console.log(person1); // {name: '卓炎秋', age: 23}
+    // 新语法,属性名与变量名一致时可省略变量名
+    let person2 = { name, age };
+    console.log(person2); // {name: '卓炎秋', age: 23}
+  </script>
+
+  <!-- 对象的函数属性简写 -->
+  <script>
+    let person3 = {
+      name: "zhuoyq",
+      eat1: function (params) {
+        console.log(this.name + "在吃" + params);
+      },
+      // 箭头函数中不能使用this关键字
+      eat2: params => console.log(person3.name + "在吃" + params),
+      eat3(params) {
+        console.log(this.name + "在吃" + params);
+      }
+    }
+    person3.eat1("苹果");
+    person3.eat2("荔枝");
+    person3.eat3("西瓜");
+  </script>
+
+  <!-- 对象扩展运算符 -->
+  <script>
+    // 拷贝对象（深拷贝）
+    let person4 = { name: "卓炎秋", age: 23 };
+    let copyPerson4 = { ...person4 };
+    console.log(copyPerson4); // {name: '卓炎秋', age: 23}
+
+    // 合并对象(属性相同时，后合并的对象属性值会覆盖之前的属性值)
+    let person5 = { name: "卓炎秋" };
+    let person6 = { age: 23 };
+    let mergePerson = { name: "zyq" };
+    mergePerson = { ...person5, ...person6 };
+    console.log(mergePerson); // {name: '卓炎秋', age: 23}
+  </script>
+
+
+
+</body>
+
+</html>

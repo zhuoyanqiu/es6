@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构表达式&字符串扩展</title>
+</head>
+<body>
+  
+    <!-- 数组解构 -->
+    <script>
+      let arr = [0,1,2];
+      let [a,b,c] = arr;
+      console.log(a,b,c);
+    </script>
+
+    <!-- 对象解构 -->
+    <script>
+      let person = {
+        name: "zhuoyq",
+        age: 23,
+        language: ['java','css','js']
+      }
+      let {name:myName,age,language} = person;
+      console.log(myName,age,language);
+    </script>
+
+    <!-- 字符串扩展 -->
+    <script>
+      // 1， startsWith：是否以传参开头；endWith：是否以传参结尾；includes：是否包含传参
+      let str = "hello.vue";
+      console.log(str.startsWith("hello")); // true
+      console.log(str.endsWith(".vue")); // true
+      console.log(str.includes("e")); // true
+      console.log(str.includes("hello")) // true
+
+      // 2. 字符串模板
+      let strTemplate = `<div>
+                          <span>hello world</span>
+                        </div>`;
+      console.log(strTemplate);
+
+      // 3. 字符串插入变量、表达式、函数调用，写在${}中
+      let name = "卓炎秋";
+      let age1 = 23;
+      function fun() {
+        return "hello world !";
+      }
+      console.log(`我是${name}，今年${age1 + 10}岁，我想说：${fun()}`);
+    </script>
+
+</body>
+</html>

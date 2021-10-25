@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数优化</title>
+</head>
+
+<body>
+  <!-- 函数参数默认值 -->
+  <script>
+    // ES6以前
+    function add1(a, b) {
+      // 判断b是否为空，为空则赋默认值1
+      b = b || 1;
+      return a + b;
+    }
+    console.log(add1(10));
+
+    // ES6
+    function add2(a, b = 1) {
+      return a + b;
+    }
+    console.log(add2(20));
+  </script>
+
+  <!-- 不定参数 -->
+  <script>
+    function fun(...params) {
+      console.log(params.length);
+    }
+    fun(1, 2); // 2
+    fun(1, 2, 3, 4); // 3
+  </script>
+
+  <!-- 箭头函数 -->
+  <script>
+    let person = {
+      name: "zhuoyq",
+      age: 23,
+      language: ['java', 'css', 'js']
+    }
+    // 普通写法
+    function print1(params) {
+      console.log(params);
+    }
+    function sum1(a, b) {
+      return a + b;
+    }
+    function fun1(a, b) {
+      let c = a + b;
+      return a + c;
+    }
+    function getPersonName1(params) {
+      console.log("hello," + params.name);
+    }
+
+    print1("hello");
+    console.log(sum1(1, 2));
+    console.log(fun1(1, 2));
+    getPersonName1(person);
+
+
+    console.log("------------------------");
+
+
+    // 函数式写法
+    let print2 = (params) => console.log(params);
+    let sum2 = (a, b) => a + b;
+    let fun2 = (a, b) => {
+      let c = a + b;
+      return a + c;
+    }
+    let getPersonName2 = ({ name }) => console.log("hello," + name);
+
+    print2("hello");
+    console.log(sum2(1, 2));
+    console.log(fun2(1, 2));
+    getPersonName2(person);
+  </script>
+
+
+
+
+</body>
+
+</html>
